@@ -1,7 +1,11 @@
 import { defineConfig } from 'vite'
-const targetpath = 'http://localhost:5000'
+import { loadEnv } from 'vite'
 
-export default defineConfig({
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '')
+  const targetpath = env.BACKEND_URL || 'http://localhost:5000'
+
+  return {
   server: {
     port: 3000,
     proxy: {
@@ -23,4 +27,5 @@ export default defineConfig({
       },
     },
   },
+  }
 })
