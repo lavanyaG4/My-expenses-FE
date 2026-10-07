@@ -3,7 +3,7 @@ import { loadEnv } from 'vite'
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  const targetpath = env.BACKEND_URL || 'http://localhost:5000'
+  const targetpath = env.VITE_BACKEND_URL || 'http://localhost:5000'
 
   return {
   server: {
